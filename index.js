@@ -12,6 +12,7 @@ let server = express();
 server.use(express.urlencoded({extended:true}));
 server.use(express.json());
 
+//Setting up ejs template
 server.set('view engine','ejs');
 server.set('views',path.join(path.resolve(),'src','views'));
 server.use('/css',express.static(path.join(path.resolve(),'src','styles')))
@@ -20,7 +21,7 @@ server.use('/css',express.static(path.join(path.resolve(),'src','styles')))
 //Middle ware to use Ejs layouts and reuse the navbar
 server.use(expressEjsLayouts);
 
-
+// Router to handle all the requests
 server.use('/',router);
 
 

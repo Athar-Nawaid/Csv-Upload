@@ -78,17 +78,17 @@ nav h1{
 }
 
 
-/* SORTING */
+.btn{
+    text-decoration: none;
+    border: solid black 2px;
+    padding: 0.1vh 0.5vw;
+}
+.view{
+    background-color: #6363bd;
+    color: white;
+}
+.del{
+    background-color: #ff0000;
+    color: white;
+}
 
-thead th{
-    position: sticky;
-    cursor: pointer;
-}
-.icon-arrow{
-    margin-left: 1vw;
-    font-size: 1.2vw;
-    transform: rotate(180deg);
-}
-th.asc .icon-arrow{
-    transform: rotate(180deg);
-}

@@ -1,48 +1,47 @@
 import Repository from "../Repository/repo.js";
 import csvToJson from "../../csvtojson.js";
 
+export default class Controller {
+  //Renders Home Page
+  static async getHomePage(req, res) {
+    let files = await Repository.getFiles();
+    res.render("home.ejs", { files: files });
+  }
 
-export default class Controller{
-
-    static async getHomePage(req,res){
-        let files = await Repository.getFiles(); 
-        res.render('home.ejs',{files:files});
+  //Deletes Files
+  static async deleteFile(req, res) {
+    let id = req.params.id;
+    let deletedItem = await Repository.deleteFileById(id);
+    console.log(deletedItem);
+    if (deletedItem.deletedCount > 0) {
+      res.redirect("/");
+    } else {
+      console.log("Could not delete file");
     }
+  }
 
-    static async deleteFile(req,res){
-        let id = req.params.id;
-        let deletedItem = await Repository.deleteFileById(id);
-        console.log(deletedItem);
-        if(deletedItem.deletedCount>0){
-            
-            res.redirect('/');
-        }else{
-            console.log('Could not delete file')
-        }
-        
-    }
+  //Renders the csv in table form
+  static async viewFile(req, res) {
+    let id = req.params.id;
+    let file = await Repository.getFileById(id);
 
-    static async viewFile(req,res){
-        let id = req.params.id;
-        let file = await Repository.getFileById(id);
-     
-        let arr = await csvToJson(file.name);
-        
-    
-        res.render('viewTable.ejs',{data:arr});
-    }
+    let arr = await csvToJson(file.name);
 
-    static async saveFile(req,res){
-        let name = req.file.filename;
-        let path = './Files/'+req.file.filename;
-        let date = new Date().toLocaleDateString();
-        let time = new Date().toLocaleTimeString();
-        
-        let file = await Repository.createFile(name,path,date,time);
-        if(!file){
-            console.log('err in saving file');
-        }else{
-            res.redirect('/');
-        }
+    res.render("viewTable.ejs", { data: arr });
+  }
+
+  //Saves the file to mongodb 
+  static async saveFile(req, res) {
+    let name = req.file.filename;
+    let path = "./Files/" + req.file.filename;
+    let date = new Date().toLocaleDateString();
+    let time = new Date().toLocaleTimeString();
+
+    let file = await Repository.createFile(name, path, date, time);
+    if (!file) {
+      console.log("err in saving file");
+    } else {
+      res.redirect("/");
     }
+  }
 }
