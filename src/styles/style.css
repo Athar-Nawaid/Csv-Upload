@@ -1,0 +1,94 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+
+
+nav{
+    color: white;
+    background-color:#9292d1 ;
+    display: flex;
+    justify-content: center;
+    
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    
+    padding: 2vh;
+}
+nav h1{
+    font-size:4vw;
+    font-weight: 800;
+}
+
+.page{
+    background-color: #d6d6fc;
+    min-height: 100vh;
+}
+
+.home-page{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.heading1{
+    margin: 3vw;
+    color:#3a3a6b ;
+}
+.upload-cont{
+    padding: 3vw 2vw;
+    background-color: #cbcbf0;
+    border-radius: 1vw;
+}
+
+.upload-cont button{
+    padding: 1vh 1vw;
+    background-color: #7575ad;
+    border-radius: 1vh;
+    color: white;
+}
+.heading2{
+
+    background-color:#9292d1 ;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    padding: 1vh;
+    color: white;
+    margin: 2vw 0;
+    width: 100%;
+    text-align: center;
+}
+
+.table-cont{
+    width: 80vw;
+}
+
+.viewTable-page{
+    padding: 2vw 5vw;
+}
+
+#search-box{
+    padding: 1vh 1vw;
+    width: 30vw;
+    border-radius: 1vh;
+}
+
+#search-btn{
+    padding: 1vh 1vw;
+    border-radius: 1vh;
+    background-color: #cbcbf0;
+}
+
+
+/* SORTING */
+
+thead th{
+    position: sticky;
+    cursor: pointer;
+}
+.icon-arrow{
+    margin-left: 1vw;
+    font-size: 1.2vw;
+    transform: rotate(180deg);
+}
+th.asc .icon-arrow{
+    transform: rotate(180deg);
+}

@@ -1,0 +1,32 @@
+<div class="home-page">
+    <h1 class="heading1">Upload a CSV file</h1>
+    <form class="upload-cont" method="post" action="/upload" enctype="multipart/form-data">
+        <input type="file" id="file-upload" name="csv-file" accept=".csv">
+        <button type="submit">Upload</button>
+    </form>
+    <h1 class="heading2">Uploaded Files</h1>
+    <div class="table-cont">
+
+        <table class="table table-striped ">
+            <thead>
+                <th>Name</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Action</th>
+                <th>Action</th>
+            </thead>
+            <tbody>
+                <%files.forEach(file=>{%>
+                    <tr>
+                        <td><%=file.name%></td>
+                        <td><%=file.date%></td>
+                        <td><%=file.time%></td>
+                        <td><a href="/view/<%=file._id%>" target="_blank">View</a></td>
+                        <td><a href="/del/<%=file._id%>" >Delete</a></td>
+
+                    </tr>
+                <%})%>
+            </tbody>
+        </table>
+    </div>
+</div>
